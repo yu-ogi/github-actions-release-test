@@ -1,7 +1,9 @@
 on:
   push:
-    tags:
-    - "v*"
+    branches:
+      - master
+    # tags:
+    # - "v*"
 
 name: Release and Upload Assets
 
