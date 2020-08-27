@@ -12,11 +12,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Install project
+        run: npm install
       - name: Build project
-        run: |
-          npm install
-          npm run build
-          zip -r --junk-paths bundle.zip lib/
+        run: npm run build
+      - name: Bundle project
+        run: zip -r --junk-paths bundle.zip lib/
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
