@@ -1,9 +1,7 @@
 on:
   push:
-    branches:
-      - master
-    # tags:
-    # - "v*"
+    tags:
+      - "v*"
 
 name: Release and Upload Assets
 
@@ -14,12 +12,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Install project
-        run: npm install
+        run: npm ci
       - name: Build project
         run: npm run build
       - name: Bundle project
         run: zip -r --junk-paths bundle.zip lib/
+      - name: Generate changelog
+        uses: scottbrenner/generate-changelog-action@master
+        id: changelog
+        env:
+          REPO: ${{ github.repository }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -28,10 +33,11 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
+          body: |
+            ${{ steps.changelog.outputs.changelog }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
-        id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
