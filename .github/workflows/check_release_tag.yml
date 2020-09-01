@@ -17,4 +17,5 @@ jobs:
       - name: Check release tag
         run: |
           set -eu
+          npm ci
           node scripts/check_release_tag.js
