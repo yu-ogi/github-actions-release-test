@@ -20,6 +20,6 @@ jobs:
         run: npm run build
       - name: Deploy
         run: |
-          git config --global user.name "${GH_USERNAME}"
-          git config --global user.email "${GH_USERNAME}@users.noreply.github.com"
+          git config --global user.name "dummy name"
+          git config --global user.email "dummy@users.noreply.github.com"
           npm run deploy
