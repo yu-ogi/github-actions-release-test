@@ -1,0 +1,22 @@
+name: Deploy pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install project
+        run: npm ci
+      - name: Build project
+        run: npm run build
+      - name: Deploy
+        run: npm run deploy
