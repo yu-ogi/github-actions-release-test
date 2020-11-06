@@ -1,14 +1,14 @@
 {
   "name": "github-actions-release-test",
   "private": true,
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "rimraf ./lib && tsc",
     "check": "node scripts/check_and_push_tag.js",
     "deploy": "gh-pages -d public",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"test passed\" && exit 0"
   },
   "author": "",
   "license": "ISC",
