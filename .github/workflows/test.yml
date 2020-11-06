@@ -1,11 +1,11 @@
-name: test
+name: ci
 
 on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
-    name: "continuous-integration: (Node ${{ matrix.node }} / ${{ matrix.os }})"
+    name: "(Node ${{ matrix.node }} / ${{ matrix.os }})"
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
