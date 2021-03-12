@@ -29,14 +29,15 @@ jobs:
           date +%s > date.txt
           git add -A
           git commit -m "dummy commit"
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        env:
-          WORKFLOW_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/actions/runs/${{ env.GITHUB_RUN_ID }}
-        with:
-          title: test pull request
-          body: |
-            Workflow URL:
-            - ${{ env.WORKFLOW_URL }}
-          delete-branch: true
+          echo "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v3
+      #   env:
+      #     WORKFLOW_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/actions/runs/${{ env.GITHUB_RUN_ID }}
+      #   with:
+      #     title: test pull request
+      #     body: |
+      #       Workflow URL:
+      #       - ${{ env.WORKFLOW_URL }}
+      #     delete-branch: true
 
