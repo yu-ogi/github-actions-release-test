@@ -31,10 +31,12 @@ jobs:
           git commit -m "dummy commit"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
+        env:
+          WORKFLOW_URL: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
         with:
           title: test pull request
           body: |
             Workflow URL:
-            - ${{ $GITHUB_SERVER_URL }}/${{ $GITHUB_REPOSITORY }}/actions/runs/${{ $GITHUB_RUN_ID }}
+            - ${{ env.WORKFLOW_URL }}
           delete-branch: true
 
