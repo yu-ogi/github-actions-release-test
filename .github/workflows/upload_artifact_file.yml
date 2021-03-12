@@ -24,8 +24,8 @@ jobs:
           path: ./lib
       - name: Create commits
         run: |
-          git config user.name '${ github.actor }'
-          git config user.email '${ github.actor }@users.noreply.github.com'
+          git config user.name '${{ github.actor }}'
+          git config user.email '${{ github.actor }}@users.noreply.github.com'
           date +%s > date.txt
           git add -A
           git commit -m "dummy commit"
@@ -35,6 +35,6 @@ jobs:
           title: test pull request
           body: |
             Workflow URL:
-            - ${ env.GITHUB_SERVER_URL }/${ env.GITHUB_REPOSITORY }/actions/runs/${ env.GITHUB_RUN_ID }
+            - ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/actions/runs/${{ env.GITHUB_RUN_ID }}
           delete-branch: true
 
