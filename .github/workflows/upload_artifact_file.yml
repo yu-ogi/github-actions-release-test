@@ -35,6 +35,6 @@ jobs:
           title: test pull request
           body: |
             Workflow URL:
-            - $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+            - ${ env.GITHUB_SERVER_URL }/${ env.GITHUB_REPOSITORY }/actions/runs/${ env.GITHUB_RUN_ID }
           delete-branch: true
 
