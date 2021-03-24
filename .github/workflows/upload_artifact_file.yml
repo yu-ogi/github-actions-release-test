@@ -41,8 +41,8 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           title: test pull request
+          branch: upload_artifact_file/${{steps.version.outputs.VERSION}}
           body: |
             Workflow URL:
             - ${{ steps.workflow.outputs.WORKFLOW_URL }}
           delete-branch: true
-
