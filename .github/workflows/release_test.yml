@@ -1,0 +1,25 @@
+name: action-release test
+
+on:
+  workflow_dispatch:
+    inputs:
+      git_name:
+        type: string
+        required: false
+        description: github-actions
+      git_email:
+        type: string
+        required: false
+        description: 41898282+github-actions[bot]@users.noreply.github.com
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: yu-git/action-release@fork-main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          npm_token: ${{ secrets.NPM_TOKEN }}
+          git_name: ${{ github.event.inputs.git_name }}
+          git_email: ${{ github.event.inputs.git_email }}
